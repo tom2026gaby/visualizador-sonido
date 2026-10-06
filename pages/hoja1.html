@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gráficas de ondas por sonido</title>
+  
+  <!-- Fuentes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <!-- Estilos -->
+  <link rel="stylesheet" href="../assets/css/common.css" />
+  <link rel="stylesheet" href="../assets/css/hoja1.css" />
+</head>
+<body>
+  <div class="page-shell">
+    
+    <!-- PANEL PRINCIPAL -->
+    <main class="main-panel hoja1-main">
+      
+      <!-- ENCABEZADO -->
+      <header class="hoja1-header">
+        <div class="header-content">
+          <h1 class="title-main">Gráficas de ondas por sonido</h1>
+          <p class="subtitle">Convierte los sonidos del entorno en información visual de manera educativa e interactiva</p>
+        </div>
+      </header>
+
+      <!-- CONTENEDOR DE 3 COLUMNAS -->
+      <div class="hoja1-grid-container">
+        
+        <!-- COLUMNA IZQUIERDA: INFO -->
+        <aside class="hoja1-column hoja1-info-column">
+          <div class="info-card">
+            <h2 class="card-title">¿Cómo funciona?</h2>
+            
+            <p class="quote">"Escucha, observa y comprende el sonido de manera educativa y fuera de lo convencional con ayuda de estas gráficas"</p>
+            
+            <p class="info-text">
+              Esta página utiliza el micrófono para captar sonidos del entorno y lo transforma en ondas en el plano cartesiano.
+            </p>
+            
+            <div class="info-section">
+              <p class="info-heading">El sonido captado se transforma en una señal que podemos observar mediante una gráfica por medio de ondas, midiendo:</p>
+              
+              <ul class="info-list">
+                <li><strong>(Eje Y)</strong> La amplitud del sonido</li>
+                <li><strong>(Eje X)</strong> El tiempo transcurrido por el sonido</li>
+              </ul>
+            </div>
+          </div>
+        </aside>
+
+        <!-- COLUMNA CENTRAL: GRÁFICA -->
+        <section class="hoja1-column hoja1-graph-column">
+          <div class="graph-card">
+            
+            <!-- GRÁFICA CON EJES -->
+            <div class="graph-wrapper">
+              <span class="axis-label axis-y">Magnitud ↑</span>
+              <canvas id="oscCanvas" class="oscilloscope-canvas"></canvas>
+              <span class="axis-label axis-x">Tiempo (s) →</span>
+            </div>
+
+            <!-- BOTONES DE CONTROL -->
+            <div class="controls-wrapper">
+              <button id="btnStart" class="btn btn-start" type="button">
+                <span class="btn-icon">▶</span> Iniciar
+              </button>
+              <button id="btnPause" class="btn btn-pause" type="button" disabled>
+                <span class="btn-icon">⏸</span> Pausar
+              </button>
+              <button id="btnResume" class="btn btn-resume" type="button" disabled>
+                <span class="btn-icon">▶</span> Reanudar
+              </button>
+              <button id="btnStop" class="btn btn-stop" type="button" disabled>
+                <span class="btn-icon">⏹</span> Detener
+              </button>
+            </div>
+
+            <!-- INDICADORES -->
+            <div class="indicators-grid">
+              <div class="indicator-box">
+                <span class="indicator-label">Frecuencia</span>
+                <strong class="indicator-value" id="freqValue">0 Hz</strong>
+              </div>
+              <div class="indicator-box">
+                <span class="indicator-label">Amplitud</span>
+                <strong class="indicator-value" id="ampValue">0</strong>
+              </div>
+              <div class="indicator-box">
+                <span class="indicator-label">Clasificación</span>
+                <strong class="indicator-value" id="classValue">Sin sonido</strong>
+              </div>
+              <div class="indicator-box">
+                <span class="indicator-label">Estado</span>
+                <strong class="indicator-value" id="stateValue">Detenido</strong>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- COLUMNA DERECHA: RESULTADOS -->
+        <aside class="hoja1-column hoja1-results-column">
+          <div class="results-card">
+            <h3 class="card-title">Información</h3>
+            
+            <div class="result-item">
+              <p class="result-label">Frecuencia capturada</p>
+              <p class="result-detail">Rango: 50 Hz - 4000 Hz</p>
+            </div>
+
+            <div class="result-item">
+              <p class="result-label">Amplitud</p>
+              <p class="result-detail">Escala: 0 - 100 %</p>
+            </div>
+
+            <div class="result-item">
+              <p class="result-label">Tipos de sonido</p>
+              <ul class="result-list">
+                <li>Grave: &lt; 250 Hz</li>
+                <li>Medio: 250 - 2000 Hz</li>
+                <li>Agudo: &gt; 2000 Hz</li>
+              </ul>
+            </div>
+
+            <div class="result-item">
+              <p class="result-label">Permisos requeridos</p>
+              <p class="result-detail">El navegador solicitará acceso al micrófono</p>
+            </div>
+          </div>
+        </aside>
+
+      </div>
+    </main>
+
+    <!-- SIDEBAR DERECHO -->
+    <aside class="sidebar sidebar-hoja1">
+      <nav class="sidebar-nav">
+        <a href="hoja1.html" class="nav-link active" title="Gráficas de ondas">
+          <span class="nav-icon">◉</span>
+          <span>Ondas</span>
+        </a>
+        <a href="hoja2.html" class="nav-link" title="Notas musicales">
+          <span class="nav-icon">♪</span>
+          <span>Notas</span>
+        </a>
+        <a href="hoja3.html" class="nav-link" title="Próximamente">
+          <span class="nav-icon">★</span>
+          <span>Más</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-text">
+        <p>Osciloscopio</p>
+      </div>
+    </aside>
+
+  </div>
+
+  <!-- Scripts -->
+  <script src="../assets/js/common.js"></script>
+  <script src="../assets/js/hoja1.js"></script>
+</body>
+</html>
